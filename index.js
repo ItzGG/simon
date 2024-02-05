@@ -14,6 +14,17 @@ $(document).keypress(function () {
   }
 });
 
+$(document).on("click", function (event) {
+  var clickedElement = $(event.target);
+  if (!clickedElement.is("#level-title") && !clickedElement.is(".btn")) {
+    if (!started) {
+      $("#level-title").text("Level " + level);
+      nextSequence();
+      started = true;
+    }
+  }
+});
+
 $(".btn").click(function () {
   var userChosenColour = $(this).attr("id");
   userClickedPattern.push(userChosenColour);
